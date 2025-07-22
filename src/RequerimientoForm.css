@@ -1,0 +1,399 @@
+/* Textbox profesional estilo evidencias_word para tabla principal */
+.form-table-cell input[type="text"],
+.form-table-cell input[type="date"],
+.form-table-cell input:not([type]),
+.form-table-cell input {
+  width: 100%;
+  border: 1.5px solid #c7c7c7;
+  border-radius: 8px;
+  padding: 1.1em 1em 1.1em 1em;
+  font-size: 1.08em;
+  background: #fff;
+  color: #1a1a1a;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  box-shadow: none;
+  margin-top: 0.2em;
+}
+.form-table-cell input:focus {
+  border-color: #ec0000;
+}
+.form-table-label {
+  display: block;
+  color: #6b6b6b;
+  font-size: 1.05em;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+  margin-left: 0.1em;
+  letter-spacing: 0.2px;
+}
+/* Floating label input estilo outlined Santander */
+.floating-label-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+}
+.floating-label-group input[type="text"],
+.floating-label-group input[type="date"],
+.floating-label-group input:not([type]),
+.floating-label-group input {
+  width: 100%;
+  border: 2px solid #ec0000;
+  border-radius: 8px;
+  padding: 1.1em 1em 0.7em 1em;
+  font-size: 1.08em;
+  background: #fff;
+  color: #1a1a1a;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  box-shadow: none;
+}
+.floating-label-group input:focus {
+  border-color: #b30000;
+}
+.floating-label-group input:focus ~ .floating-label,
+.floating-label-group input:not(:placeholder-shown):not([type="date"]):not([value=""]) ~ .floating-label {
+  top: 0.3em;
+  left: 1em;
+  font-size: 0.93em;
+  color: #ec0000;
+  background: #fff;
+  padding: 0 0.2em;
+  font-weight: 500;
+}
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 1em;
+  top: 1.1em;
+  color: #ec0000;
+  font-size: 1.08em;
+  font-weight: 500;
+  background: transparent;
+  transition: 0.18s cubic-bezier(.4,0,.2,1);
+  z-index: 2;
+}
+.floating-label-group input[type="date"]:not(:focus):not([value=""]):not(:placeholder-shown) ~ .floating-label {
+  top: 0.3em;
+  left: 1em;
+  font-size: 0.93em;
+  color: #ec0000;
+  background: #fff;
+  padding: 0 0.2em;
+  font-weight: 500;
+}
+.floating-label-group input[type="date"]:focus ~ .floating-label {
+  top: 0.3em;
+  left: 1em;
+  font-size: 0.93em;
+  color: #ec0000;
+  background: #fff;
+  padding: 0 0.2em;
+  font-weight: 500;
+}
+
+/* Tabla de campos principales (ID, Fecha, Área, Contacto) - profesional y responsiva */
+.form-table-group {
+  width: 100%;
+  margin-bottom: 2.2rem;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #fafbfc 80%, #f5f6fa 100%);
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+  border: 1.5px solid #e5e5e5;
+  overflow: hidden;
+  padding: 0.2rem 0.2rem;
+}
+.form-table-row {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #ececec;
+  background: transparent;
+}
+.form-table-row:last-child {
+  border-bottom: none;
+}
+.form-table-cell {
+  flex: 1 1 0;
+  padding: 0.85em 0.9em;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  background: transparent;
+}
+.label-cell {
+  background: #f6f6f8;
+  font-weight: 700;
+  color: #222;
+  font-size: 1.08em;
+  border-right: 1px solid #ececec;
+  min-width: 120px;
+  border-radius: 0;
+  letter-spacing: 0.1px;
+}
+.input-cell {
+  background: #fff;
+  font-weight: 400;
+  color: #888;
+  font-size: 1em;
+  border-right: 1px solid #ececec;
+  border-radius: 0;
+}
+.form-table-row .input-cell:last-child {
+  border-right: none;
+}
+.form-table-cell input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.05em;
+  color: #222;
+  font-family: inherit;
+  font-style: italic;
+  outline: none;
+  padding: 0.2em 0.1em;
+  transition: background 0.2s;
+}
+.form-table-cell input:focus {
+  background: #f3f6fa;
+}
+.form-table-cell input::placeholder {
+  color: #b0b0b0;
+  font-style: italic;
+}
+@media (max-width: 900px) {
+  .form-table-group {
+    padding: 0.1rem 0.1rem;
+  }
+  .form-table-cell {
+    font-size: 0.98em;
+    padding: 0.7em 0.5em;
+  }
+}
+@media (max-width: 700px) {
+  .form-table-group {
+    border-radius: 10px;
+    padding: 0;
+  }
+  .form-table-row {
+    flex-direction: column;
+    border-bottom: none;
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.03);
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .form-table-cell {
+    border-right: none !important;
+    border-bottom: 1px solid #ececec;
+    padding: 0.7em 0.7em;
+    font-size: 1em;
+    border-radius: 0;
+  }
+  .form-table-cell:last-child {
+    border-bottom: none;
+  }
+  .label-cell {
+    border-bottom: none;
+    border-right: none;
+    background: #f6f6f8;
+    font-size: 1em;
+    border-radius: 0;
+  }
+  .input-cell {
+    background: #fff;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 0;
+  }
+}
+/* Header Santander QA */
+
+
+/* Header Santander QA - estilo evidencias_word */
+
+
+/* Header Santander QA - centrado real y QA a la derecha, sin scroll X */
+.santander-header {
+  width: 100%;
+  background: #ec0000;
+  padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+  margin-bottom: 2.2rem;
+  box-shadow: 0 2px 8px 0 rgba(236,0,0,0.10);
+  border-radius: 20px;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  min-height: 56px;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.santander-header-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  line-height: 1.1;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.santander-qa-ball {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  background: #fff;
+  color: #ec0000;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+  border: 2px solid #ec0000;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .santander-header-title {
+    font-size: 1.3rem;
+  }
+  .santander-header {
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    min-height: 44px;
+  }
+  .santander-qa-ball {
+    right: 0.7rem;
+  }
+}
+@media (max-width: 700px) {
+  .santander-header {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    border-radius: 0 0 20px 20px;
+    min-height: 44px;
+  }
+  .santander-header-title {
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
+  }
+  .santander-qa-ball {
+    right: 0.3rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+}
+
+
+/* Formulario Santander QA - estilo evidencias_word */
+.requerimiento-form {
+  background: #fff;
+  color: #1a1a1a;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  border-radius: 18px;
+  max-width: 700px;
+  margin: 2.5rem auto 2rem auto;
+  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.10);
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  border: none;
+  position: relative;
+}
+.requerimiento-form h2 {
+  margin-bottom: 1.5rem;
+  color: #ec0000;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+}
+.form-group {
+  margin-bottom: 1.3rem;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #6b6b6b;
+  font-size: 1.05em;
+  letter-spacing: 0.2px;
+}
+.requerimiento-form input,
+.requerimiento-form textarea {
+  border-radius: 10px;
+  border: 1.5px solid #e0e0e0;
+  padding: 0.9em 1.1em;
+  font-size: 1.08em;
+  background: #fafbfc;
+  color: #1a1a1a;
+  font-family: inherit;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+  outline: none;
+  resize: vertical;
+}
+.requerimiento-form input:focus,
+.requerimiento-form textarea:focus {
+  border-color: #ec0000;
+  box-shadow: 0 0 0 2px rgba(236,0,0,0.10);
+}
+.requerimiento-form button {
+  border-radius: 8px;
+  border: none;
+  padding: 0.9em 2.2em;
+  font-size: 1.1em;
+  font-weight: 700;
+  font-family: inherit;
+  background-color: #ec0000;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px 0 rgba(236,0,0,0.08);
+  letter-spacing: 0.5px;
+}
+.requerimiento-form button:hover {
+  background: #b30000;
+  box-shadow: 0 4px 16px 0 rgba(236,0,0,0.13);
+}
+.requerimiento-form-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1.5px solid #ec0000;
+  text-align: center;
+  color: #b30000;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: transparent;
+}
+@media (max-width: 900px) {
+  .requerimiento-form {
+    padding: 1.5rem 0.7rem 1rem 0.7rem;
+    max-width: 98vw;
+  }
+  .requerimiento-form h2 {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 700px) {
+  .requerimiento-form {
+    padding: 1.1rem 0.2rem 0.7rem 0.2rem;
+    max-width: 99vw;
+  }
+  .requerimiento-form h2 {
+    font-size: 1.1rem;
+  }
+}
