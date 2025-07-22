@@ -154,67 +154,148 @@ const RequerimientoForm = () => {
                   required
                 />
               </Box>
-              <Box sx={{ mt: 4, width: '100%', maxWidth: 800, display: 'flex', flexDirection: 'column', gap: 3 }}>
-                <TextField
-                  fullWidth
-                  label="Información de requerimiento"
-                  name="info"
-                  value={form.info}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  minRows={2}
-                />
-                <TextField
-                  fullWidth
-                  label="Descripción de la necesidad o problema"
-                  name="descripcion"
-                  value={form.descripcion}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  minRows={2}
-                />
-                <TextField
-                  fullWidth
-                  label="Objetivo del requerimiento"
-                  name="objetivo"
-                  value={form.objetivo}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  minRows={2}
-                />
-                <TextField
-                  fullWidth
-                  label="Beneficio esperado"
-                  name="beneficio"
-                  value={form.beneficio}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  minRows={2}
-                />
-                <TextField
-                  fullWidth
-                  label="Detalle de requerimiento - Funcionales"
-                  name="funcionales"
-                  value={form.funcionales}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  minRows={2}
-                />
-                <TextField
-                  fullWidth
-                  label="Detalle de requerimiento - No Funcionales"
-                  name="noFuncionales"
-                  value={form.noFuncionales}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  minRows={2}
-                />
+              {/* Información del Requerimiento - estilo tabla */}
+              <Box sx={{ mt: 4, width: '100%', maxWidth: 800 }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', marginBottom: 24 }}>
+                  <tbody>
+                    <tr>
+                      <td colSpan={2} style={{ padding: 8, border: '1px solid #ccc' }}>
+                        <TextField
+                          fullWidth
+                          label="Nombre Requerimiento"
+                          name="info"
+                          value={form.info}
+                          onChange={handleChange}
+                          required
+                          variant="outlined"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style={{ width: 220, padding: 8, border: '1px solid #ccc', verticalAlign: 'top', fontWeight: 500 }}>
+                        Tipo de Requerimiento:
+                      </td>
+                      <td style={{ padding: 8, border: '1px solid #ccc' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                          <label><input type="checkbox" name="tipoNuevo" /> Nuevo producto</label>
+                          <label><input type="checkbox" name="tipoMejora" /> Mejora</label>
+                          <label><input type="checkbox" name="tipoCorreccion" /> Corrección</label>
+                          <label><input type="checkbox" name="tipoOtro" /> Otro</label>
+                        </Box>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                {/* Resto de campos */}
+                {/* Agrupación en tabla de los campos de descripción, objetivo y beneficio */}
+                <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', marginBottom: 24 }}>
+                  <tbody>
+                    <tr>
+                      <td style={{ padding: 8, border: '1px solid #ccc', fontWeight: 400, fontSize: 17, verticalAlign: 'top', width: '30%' }}>
+                        Descripción general de la necesidad o problema:
+                      </td>
+                      <td style={{ padding: 8, border: '1px solid #ccc' }}>
+                        <TextField
+                          fullWidth
+                          name="descripcion"
+                          value={form.descripcion}
+                          onChange={handleChange}
+                          required
+                          multiline
+                          minRows={3}
+                          placeholder="(Explique claramente el problema, necesidad o idea que motiva la solicitud.)"
+                          InputProps={{ style: { fontStyle: form.descripcion ? 'normal' : 'italic', color: form.descripcion ? undefined : '#aaa' } }}
+                          variant="outlined"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style={{ padding: 8, border: '1px solid #ccc', fontWeight: 400, fontSize: 17, verticalAlign: 'top' }}>
+                        Objetivo del requerimiento:
+                      </td>
+                      <td style={{ padding: 8, border: '1px solid #ccc' }}>
+                        <TextField
+                          fullWidth
+                          name="objetivo"
+                          value={form.objetivo}
+                          onChange={handleChange}
+                          required
+                          multiline
+                          minRows={3}
+                          placeholder="¿Qué se espera lograr con este requerimiento?"
+                          InputProps={{ style: { fontStyle: form.objetivo ? 'normal' : 'italic', color: form.objetivo ? undefined : '#aaa' } }}
+                          variant="outlined"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style={{ padding: 8, border: '1px solid #ccc', fontWeight: 400, fontSize: 17, verticalAlign: 'top' }}>
+                        Justificación/Beneficio esperado:
+                      </td>
+                      <td style={{ padding: 8, border: '1px solid #ccc' }}>
+                        <TextField
+                          fullWidth
+                          name="beneficio"
+                          value={form.beneficio}
+                          onChange={handleChange}
+                          required
+                          multiline
+                          minRows={3}
+                          placeholder="¿Por qué es importante este requerimiento? ¿Qué beneficios aporta?"
+                          InputProps={{ style: { fontStyle: form.beneficio ? 'normal' : 'italic', color: form.beneficio ? undefined : '#aaa' } }}
+                          variant="outlined"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                {/* Detalle de Requerimientos - estilo tabla */}
+                <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', marginBottom: 24 }}>
+                  <thead>
+                    <tr>
+                      <th style={{ textAlign: 'center', fontWeight: 400, fontSize: 18, padding: 8, border: '1px solid #ccc', background: '#fafafa' }}>
+                        Requerimientos Funcionales
+                      </th>
+                      <th style={{ textAlign: 'center', fontWeight: 400, fontSize: 18, padding: 8, border: '1px solid #ccc', background: '#fafafa' }}>
+                        Requerimientos NO Funcionales
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style={{ padding: 8, border: '1px solid #ccc', verticalAlign: 'top' }}>
+                        <TextField
+                          fullWidth
+                          multiline
+                          minRows={6}
+                          name="funcionales"
+                          value={form.funcionales}
+                          onChange={handleChange}
+                          placeholder="¿Qué funcionalidades específicas necesita el usuario?"
+                          InputProps={{
+                            style: { fontStyle: form.funcionales ? 'normal' : 'italic', color: form.funcionales ? undefined : '#aaa' }
+                          }}
+                          variant="outlined"
+                        />
+                      </td>
+                      <td style={{ padding: 8, border: '1px solid #ccc', verticalAlign: 'top' }}>
+                        <TextField
+                          fullWidth
+                          multiline
+                          minRows={6}
+                          name="noFuncionales"
+                          value={form.noFuncionales}
+                          onChange={handleChange}
+                          placeholder="Ej: desempeño, usabilidad, seguridad, cumplimiento normativo, etc."
+                          InputProps={{
+                            style: { fontStyle: form.noFuncionales ? 'normal' : 'italic', color: form.noFuncionales ? undefined : '#aaa' }
+                          }}
+                          variant="outlined"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
                 <TextField
                   fullWidth
                   label="Criterios de aceptación"
@@ -240,7 +321,8 @@ const RequerimientoForm = () => {
           </Paper>
           <Paper elevation={0} sx={{ p: 3, textAlign: 'center', backgroundColor: '#F8F9FA', width: '100%', maxWidth: '100%' }}>
             <Typography variant="body2" color="text.secondary">
-              © {new Date().getFullYear()} Banco Santander México. Todos los derechos reservados.
+              © {new Date().getFullYear()}  Santander Consumer Bank - Aseguramiento de Calidad<br />
+              Powered by Abraham Rivera | Support: arivera_scb@santander.com.pe - 2025
             </Typography>
           </Paper>
         </Container>
