@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { generateWordFromTemplate } from './utils/generateWord';
 import QAHeader from './QAHeader';
 import {
   Container,
@@ -93,16 +94,49 @@ const RequerimientoForm = () => {
     funcionales: '',
     noFuncionales: '',
     criterios: '',
+    tipoNuevo: false,
+    tipoMejora: false,
+    tipoCorreccion: false,
+    tipoOtro: false,
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    const { name, value, type, checked } = e.target;
+    if (name === 'tipoNuevo' || name === 'tipoMejora' || name === 'tipoCorreccion' || name === 'tipoOtro') {
+      setForm({
+        ...form,
+        tipoNuevo: false,
+        tipoMejora: false,
+        tipoCorreccion: false,
+        tipoOtro: false,
+        [name]: checked
+      });
+    } else if (type === 'checkbox') {
+      setForm({ ...form, [name]: checked });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleClear = (e) => {
     e.preventDefault();
-    alert('Formulario enviado!');
+    setForm({
+      id: '',
+      fecha: '',
+      area: '',
+      contacto: '',
+      info: '',
+      descripcion: '',
+      objetivo: '',
+      beneficio: '',
+      funcionales: '',
+      noFuncionales: '',
+      criterios: '',
+      tipoNuevo: false,
+      tipoMejora: false,
+      tipoCorreccion: false,
+      tipoOtro: false,
+    });
   };
 
   return (
@@ -111,7 +145,7 @@ const RequerimientoForm = () => {
         <QAHeader />
         <Container maxWidth="md" sx={{ py: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
           <Paper elevation={0} sx={{ p: 4, mb: 3, width: '100%', maxWidth: '100%' }}>
-            <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+            <Box component="form" onSubmit={handleClear} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
               <Box sx={{
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
@@ -177,10 +211,10 @@ const RequerimientoForm = () => {
                       </td>
                       <td style={{ padding: 8, border: '1px solid #ccc' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                          <label><input type="checkbox" name="tipoNuevo" /> Nuevo producto</label>
-                          <label><input type="checkbox" name="tipoMejora" /> Mejora</label>
-                          <label><input type="checkbox" name="tipoCorreccion" /> Corrección</label>
-                          <label><input type="checkbox" name="tipoOtro" /> Otro</label>
+                          <label><input type="checkbox" name="tipoNuevo" checked={form.tipoNuevo} onChange={handleChange} /> Nuevo producto</label>
+                          <label><input type="checkbox" name="tipoMejora" checked={form.tipoMejora} onChange={handleChange} /> Mejora</label>
+                          <label><input type="checkbox" name="tipoCorreccion" checked={form.tipoCorreccion} onChange={handleChange} /> Corrección</label>
+                          <label><input type="checkbox" name="tipoOtro" checked={form.tipoOtro} onChange={handleChange} /> Otro</label>
                         </Box>
                       </td>
                     </tr>
@@ -310,11 +344,22 @@ const RequerimientoForm = () => {
               <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', mt: 4 }}>
                 <Button
                   type="submit"
-                  variant="contained"
+                  variant="outlined"
+                  color="primary"
                   size="large"
-                  sx={{ minWidth: 200 }}
+                  sx={{ minWidth: 200, fontWeight: 600, borderWidth: 2 }}
                 >
-                  Enviar
+                  Limpiar
+                </Button>
+                <Button
+                  type="button"
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  sx={{ minWidth: 200, fontWeight: 600 }}
+                  onClick={() => generateWordFromTemplate(form)}
+                >
+                  Generar Word
                 </Button>
               </Box>
             </Box>
